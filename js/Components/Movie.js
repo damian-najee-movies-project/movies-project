@@ -2,7 +2,7 @@ class Movie {
     constructor(data, target){
         this.id = data.id
         this.rating = data.rating;
-        this.director = data.director;
+        this.genre = data.genre;
         this.title = data.title;
         this.element = this.render(target);
     }
@@ -16,7 +16,7 @@ class Movie {
               </div>
               <div class="card-bottom">
                 <h2>${this.rating}</h2>
-                <p>${this.director}</p>
+                <p>${this.genre}</p>
                 <p>${this.id}</p>
               </div>
         `;

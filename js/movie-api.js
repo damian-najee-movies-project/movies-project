@@ -1,4 +1,4 @@
-import Movie from '../../movies-project/js/Movie.js'
+import Movie from './Components/Movie.js'
 export async function getMovies(){
     let url = 'http://localhost:3000/movies'
     let options = {
