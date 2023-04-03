@@ -1,9 +1,9 @@
-import { displayMovies } from './movie-api.js'
+import { displayMovies, addMovie, deleteFavorite } from './movie-api.js'
 
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
 const leftButton = document.querySelector('#right');
-const addMovie = document.querySelector('#add-movie')
+const addMoviePopout = document.querySelector('#add-movie')
 let selectedIndex = 0;
 let cellCount = 9;
 
@@ -21,14 +21,33 @@ leftButton.addEventListener('click', () => {
     rotateCarousel();
 
 });
-addMovie.addEventListener('click', ()=>{
+addMoviePopout.addEventListener('click', ()=>{
     document.querySelector('.overlay').classList.toggle('show');
 })
 document.querySelector('.cancel').addEventListener('click', function(event) {
     document.querySelector('.overlay').classList.toggle('show');
 });
+document.querySelector('#submitBtn').addEventListener('click',async(e) => {
+    const form = document.forms['myForm'];
+    //const title = form.elements['title'].value;
+    const title = document.querySelector('#title').value
+    const genre = document.querySelector('#genre').value
+    const rating = document.querySelector('#ratings').value
+    const id = document.querySelector('#id').value
 
+    let movie = {
+        title,genre,rating,id
+    }
+    await addMovie(movie)
+    await displayMovies()
+});
 
+document.querySelector('#delete').addEventListener('click',()=>{
+
+});
+document.querySelector('#edit').addEventListener('click',()=>{
+
+});
 
 (async ()=>{
     await displayMovies()

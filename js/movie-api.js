@@ -22,3 +22,36 @@ export async function displayMovies(){
     });
     console.log(movieArray)
 }
+export const addMovie = async (movie) => {
+    try {
+        let url = `http://localhost:3000/movies`;
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        }
+        let response = await fetch(url, options);
+        let data = await response.json();
+        return data;
+    } catch(error){
+        console.log(error);
+    }
+}
+export const deleteFavorite = async () => {
+    try {
+        let url = `http://localhost:3000/movies/`;
+        let options = {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        let response = await fetch(url, options);
+        let data = await response.json();
+        return data;
+    } catch(error){
+        console.log(error);
+    }
+}
