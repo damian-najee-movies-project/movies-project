@@ -1,4 +1,4 @@
-import { displayMovies, addMovie, deleteFavorite } from './movie-api.js'
+import { displayMovies, addMovie, deleteFavorite, search, setSearchContent } from './movie-api.js'
 
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
@@ -23,24 +23,29 @@ leftButton.addEventListener('click', () => {
 });
 addMoviePopout.addEventListener('click', ()=>{
     document.querySelector('.overlay').classList.toggle('show');
-})
-document.querySelector('.cancel').addEventListener('click', function(event) {
-    document.querySelector('.overlay').classList.toggle('show');
 });
-document.querySelector('#submitBtn').addEventListener('click',async(e) => {
-    const form = document.forms['myForm'];
-    //const title = form.elements['title'].value;
-    const title = document.querySelector('#title').value
-    const genre = document.querySelector('#genre').value
-    const rating = document.querySelector('#ratings').value
-    const id = document.querySelector('#id').value
+document.querySelector('#search').addEventListener('input',async(e) => {
+    let userInput = e.target.value
+    await search(userInput)
 
-    let movie = {
-        title,genre,rating,id
-    }
-    await addMovie(movie)
-    await displayMovies()
 });
+// document.querySelector('.cancel').addEventListener('click', function(event) {
+//     document.querySelector('.overlay').classList.toggle('show');
+// });
+// document.querySelector('#submitBtn').addEventListener('click',async(e) => {
+//     const form = document.forms['myForm'];
+//     //const title = form.elements['title'].value;
+//     const title = document.querySelector('#title').value
+//     const genre = document.querySelector('#genre').value
+//     const rating = document.querySelector('#ratings').value
+//     const id = document.querySelector('#id').value
+//
+//     let movie = {
+//         title,genre,rating,id
+//     }
+//     await addMovie(movie)
+//     await displayMovies()
+// });
 
 
 

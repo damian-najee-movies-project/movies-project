@@ -69,3 +69,20 @@ export const editFavorite = async (id) => {
         console.log(error);
     }
 }
+export const search = async (input)=>{
+    try{
+        let url = `https://api.themoviedb.org/3/search/movie?api_key=${keys.movieKey}&query=${input}&language=en-US&page=1&include_adult=false`
+        let response = await fetch(url)
+        let data = await response.json()
+        console.log(data)
+        return data
+    }catch(e){
+        console.log(e)
+    }
+
+}
+export const setSearchContent= async ()=>{
+    let searchContent = await search()
+
+    console.log(searchContent)
+}
