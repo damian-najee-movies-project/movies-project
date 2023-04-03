@@ -1,6 +1,8 @@
 import Movie from './Components/Movie.js'
-export async function getMovies(){
-    let url = 'http://localhost:3000/movies'
+import keys from "./keys.js";
+
+export async function getMovies(movie){
+    let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.movieKey}&language=en-US&page=1`
     let options = {
         headers:{
             'Content-Type': 'application/json'
@@ -9,7 +11,8 @@ export async function getMovies(){
     try{
         let response = await fetch( url, options)
         let data = await response.json()
-        return data
+        console.log(data)
+        return data.results
     }catch (e) {
         console.log(e)
     }
@@ -24,7 +27,7 @@ export async function displayMovies(){
 }
 export const addMovie = async (movie) => {
     try {
-        let url = `http://localhost:3000/movies`;
+        let url = `https://api.themoviedb.org/3/movie/550?api${keys.movieKey}`;
         let options = {
             method: "POST",
             headers: {
@@ -39,18 +42,29 @@ export const addMovie = async (movie) => {
         console.log(error);
     }
 }
-export const deleteFavorite = async () => {
+export const deleteFavorite = async (id) => {
     try {
-        let url = `http://localhost:3000/movies/`;
+        let url = `http://localhost:3000/movies/${id}`;
         let options = {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            method: "DELETE"
+
         }
         let response = await fetch(url, options);
         let data = await response.json();
-        return data;
+    } catch(error){
+        console.log(error);
+    }
+}
+
+export const editFavorite = async (id) => {
+    try {
+        let url = `http://localhost:3000/movies/${id}`;
+        let options = {
+            method: "PATCH"
+
+        }
+        let response = await fetch(url, options);
+        let data = await response.json();
     } catch(error){
         console.log(error);
     }

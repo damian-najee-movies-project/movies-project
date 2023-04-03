@@ -42,12 +42,7 @@ document.querySelector('#submitBtn').addEventListener('click',async(e) => {
     await displayMovies()
 });
 
-document.querySelector('#delete').addEventListener('click',()=>{
 
-});
-document.querySelector('#edit').addEventListener('click',()=>{
-
-});
 
 (async ()=>{
     await displayMovies()
