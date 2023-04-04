@@ -1,5 +1,4 @@
-import { displayMovies, addMovie, deleteFavorite, search, debounce } from './movie-api.js'
-
+import { displayMovies, addMovie, deleteFavorite, search, debounce} from './movie-api.js';
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
 const leftButton = document.querySelector('#right');

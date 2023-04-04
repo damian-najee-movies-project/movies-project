@@ -1,13 +1,14 @@
-import {deleteFavorite} from "../movie-api.js";
+import {addMovie} from "../movie-api.js";
 
-class Movie {
-    constructor(data, target){
-        this.poster_path= data.poster_path
+class searchMovie {
+    constructor(data, target) {
+        this.poster_path = data.poster_path
         this.title = data.title;
         this.vote_average = data.vote_average;
         this.element = this.render(target);
     }
-    render(target){
+
+    render(target) {
         let moviesNode = document.createElement('div');
         moviesNode.classList.add('movie-card');
         let html = `
@@ -18,26 +19,19 @@ class Movie {
                 <h2>${this.title}</h2>
                 <p>${this.vote_average}</p>
                 <button class="movie-add">Favorites</button>
-                <button class="movie-delete">Delete</button>
               </div>
         `;
         moviesNode.innerHTML = html;
-        let deleteButton = moviesNode.querySelector('.movie-delete');
-        deleteButton.addEventListener('click', async function(){
-             await deleteFavorite(this.id);
-            moviesNode.remove();
+        let pushMovie = moviesNode.querySelector('.movie-add');
+        addMovie.addEventListener('click', async function () {
+            await addMovie({
+                img: this.poster_path,
+                title:this.title,
+            });
         }.bind(this));
         target.appendChild(moviesNode);
         return moviesNode;
 
     }
-
-
-
-
-    movieClick(){
-
-    }
 }
-
-export default Movie;
+export default searchMovie

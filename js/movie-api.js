@@ -1,6 +1,6 @@
-import Movie from './Components/Movie.js'
+import Movie from './Components/Movie.js';
 import keys from "./keys.js";
-
+// import searchMovie from "./Components/SearchMovie";
 export async function getMovies(movie){
     let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.movieKey}&language=en-US&page=1`
     let options = {
