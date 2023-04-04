@@ -1,4 +1,4 @@
-import { displayMovies, addMovie, deleteFavorite, search, setSearchContent } from './movie-api.js'
+import { displayMovies, addMovie, deleteFavorite, search, debounce } from './movie-api.js'
 
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
@@ -24,12 +24,15 @@ leftButton.addEventListener('click', () => {
 addMoviePopout.addEventListener('click', ()=>{
     document.querySelector('.overlay').classList.toggle('show');
 });
-document.querySelector('#search').addEventListener('input',async(e) => {
+document.querySelector('#search').addEventListener('input', debounce( async (e) => {
     let userInput = e.target.value
+    console.log(userInput)
     await search(userInput)
 
-});
-// document.querySelector('.cancel').addEventListener('click', function(event) {
+}, 1000));
+
+// document.querySelector('.cancel')
+// .addEventListener('click', function(event) {
 //     document.querySelector('.overlay').classList.toggle('show');
 // });
 // document.querySelector('#submitBtn').addEventListener('click',async(e) => {
@@ -46,13 +49,16 @@ document.querySelector('#search').addEventListener('input',async(e) => {
 //     await addMovie(movie)
 //     await displayMovies()
 // });
-
+// const input = document.querySelector('input');
+// input.addEventListener('input', debounce(function(){
+// }, 500));
 
 
 (async ()=>{
     await displayMovies()
     document.querySelector('.content').style = 'display: flex'
     document.querySelector('#loading-icon').style = 'display:none'
+
 })()
 
 

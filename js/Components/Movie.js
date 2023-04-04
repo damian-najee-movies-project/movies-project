@@ -17,7 +17,6 @@ class Movie {
               <div class="card-bottom">
                 <h2>${this.title}</h2>
                 <p>${this.vote_average}</p>
-                <button class="movie-edit">Edit</button>
                 <button class="movie-delete">Delete</button>
               </div>
         `;

@@ -11,7 +11,7 @@ export async function getMovies(movie){
     try{
         let response = await fetch( url, options)
         let data = await response.json()
-        console.log(data)
+        // console.log(data)
         return data.results
     }catch (e) {
         console.log(e)
@@ -20,10 +20,10 @@ export async function getMovies(movie){
 export async function displayMovies(){
     let movieArray = await getMovies();
     movieArray.forEach(function(movie){
-        let movieList = document.querySelector('.content');
-        new Movie(movie, movieList);
+        // let movieList = document.querySelector('.content');
+        // new Movie(movie, movieList);
     });
-    console.log(movieArray)
+    // console.log(movieArray)
 }
 export const addMovie = async (movie) => {
     try {
@@ -75,14 +75,32 @@ export const search = async (input)=>{
         let response = await fetch(url)
         let data = await response.json()
         console.log(data)
-        return data
+        let movieList = document.querySelector('.search-content');
+
+        movieList.innerHTML = '';
+
+        if (input === '' || input.length <= 1) {
+            return;
+        }
+        if (input.toLowerCase() === 'the' || input.toLowerCase() === 'the ') {
+            return;
+        }
+        data.results.forEach(movie => new Movie(movie, movieList));
     }catch(e){
         console.log(e)
     }
-
 }
-export const setSearchContent= async ()=>{
-    let searchContent = await search()
 
-    console.log(searchContent)
+// export const setSearchContent= async ()=>{
+//     let searchContent = await search()
+//     console.log(searchContent)
+// }
+
+export function debounce(func, delay) {
+    let timer;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(context, args), delay);
+    };
 }

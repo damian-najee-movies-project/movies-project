@@ -217,7 +217,7 @@ body {
     padding: 0 10px 10px 10px;
 }
 .overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: -100%;
     width: 100%;
@@ -246,4 +246,9 @@ form{
 }
 .movie-search{
    width: 300px;
+}
+#search.movie-search {
+    height: 40px;
+    background-color: lightgray;
+    padding: 30px;
 }
