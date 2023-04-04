@@ -1,8 +1,9 @@
-import { displayMovies, addMovie, deleteFavorite, search, debounce} from './movie-api.js';
+import {displayMovies, addMovie, deleteFavorite, search, debounce, displayFavorites} from './movie-api.js';
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
 const leftButton = document.querySelector('#right');
 const addMoviePopout = document.querySelector('#add-movie')
+const customMoviePopout = document.querySelector('#add-custom-movie')
 let selectedIndex = 0;
 let cellCount = 9;
 
@@ -20,9 +21,13 @@ leftButton.addEventListener('click', () => {
     rotateCarousel();
 
 });
+customMoviePopout.addEventListener('click', ()=>{
+    document.querySelector('.custom-overlay').classList.toggle(('show'))
+} )
 addMoviePopout.addEventListener('click', ()=>{
     document.querySelector('.overlay').classList.toggle('show');
 });
+
 document.querySelector('#search').addEventListener('input', debounce( async (e) => {
     let userInput = e.target.value
     console.log(userInput)
@@ -30,31 +35,28 @@ document.querySelector('#search').addEventListener('input', debounce( async (e) 
 
 }, 1000));
 
-// document.querySelector('.cancel')
-// .addEventListener('click', function(event) {
-//     document.querySelector('.overlay').classList.toggle('show');
-// });
-// document.querySelector('#submitBtn').addEventListener('click',async(e) => {
-//     const form = document.forms['myForm'];
-//     //const title = form.elements['title'].value;
-//     const title = document.querySelector('#title').value
-//     const genre = document.querySelector('#genre').value
-//     const rating = document.querySelector('#ratings').value
-//     const id = document.querySelector('#id').value
-//
-//     let movie = {
-//         title,genre,rating,id
-//     }
-//     await addMovie(movie)
-//     await displayMovies()
-// });
-// const input = document.querySelector('input');
-// input.addEventListener('input', debounce(function(){
-// }, 500));
+document.querySelector('.cancel').addEventListener('click', function(event) {
+    document.querySelector('.custom-overlay').classList.toggle('show');
+});
+document.querySelector('#submitBtn').addEventListener('click',async(e) => {
+    const form = document.forms['myForm'];
+    //const title = form.elements['title'].value;
+    const title = document.querySelector('#title').value
+    const genre = document.querySelector('#genre').value
+    const rating = document.querySelector('#ratings').value
+    const director = document.querySelector('#director').value
+
+    let movie = {
+        title,genre,rating,director
+    }
+    await addMovie(movie)
+    await displayMovies()
+});
+
 
 
 (async ()=>{
-    await displayMovies()
+    await displayFavorites()
     document.querySelector('.content').style = 'display: flex'
     document.querySelector('#loading-icon').style = 'display:none'
 

@@ -17,17 +17,41 @@ export async function getMovies(movie){
         console.log(e)
     }
 }
+export async function getFavorites(movie){
+    let url = `http://localhost:3000/movies/`
+    let options = {
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
+    try{
+        let response = await fetch( url, options)
+        let data = await response.json()
+        // console.log(data)
+        return data
+    }catch (e) {
+        console.log(e)
+    }
+}
+export async function displayFavorites(){
+    let movieArray = await getFavorites();
+    movieArray.forEach(function(movie){
+        let movieList = document.querySelector('.content');
+        new Movie(movie, movieList);
+    });
+    // console.log(movieArray)
+}
 export async function displayMovies(){
     let movieArray = await getMovies();
     movieArray.forEach(function(movie){
-        // let movieList = document.querySelector('.content');
-        // new Movie(movie, movieList);
+        let movieList = document.querySelector('.content');
+        new Movie(movie, movieList);
     });
     // console.log(movieArray)
 }
 export const addMovie = async (movie) => {
     try {
-        let url = `https://api.themoviedb.org/3/movie/550?api${keys.movieKey}`;
+        let url = 'http://localhost:3000/movies'
         let options = {
             method: "POST",
             headers: {
@@ -65,6 +89,7 @@ export const editFavorite = async (id) => {
         }
         let response = await fetch(url, options);
         let data = await response.json();
+        return data
     } catch(error){
         console.log(error);
     }

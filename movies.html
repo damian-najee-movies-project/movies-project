@@ -108,6 +108,8 @@
             <div class="column shrink">
                 <nav class="row">
                     <div id="add-movie" class="column shrink"><a href="#" title="Go Home">+ Add movie</a></div>
+                    <div id="add-custom-movie" class="column shrink"><a href="#" title="Go Home">+ Add custom movie</a>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -118,7 +120,61 @@
                         <input id="search" type="text" class="movie-search">
                     </div>
                     <div class="search-content">
-<!--                        search content-->
+                        <!--                        search content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-overlay">
+            <div class="form-container">
+                <div class="row">
+                    <div class="column">
+                        <div class="form-container">
+                            <div class="row">
+                                <div class="column">
+                                    <form id="form" class="justify-center">
+                                        <!-- form fields go here -->
+                                        <div class="row">
+                                            <h1 class="form-title">Add custom Movie</h1>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column">
+                                                <label for="title">Title:</label>
+                                            </div>
+                                            <div class="column">
+                                                <input id="title" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column">
+                                                <label for="director">Director:</label>
+                                            </div>
+                                            <div class="column">
+                                                <input id="director" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column">
+                                                <label for="genre">Genre:</label>
+                                            </div>
+                                            <div class="column">
+                                                <input id="genre" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column">
+                                                <label for="ratings">Ratings:</label>
+                                            </div>
+                                            <div class="column">
+                                                <input id="ratings" type="text">
+                                            </div>
+                                        </div>
+                                        <button id="submitBtn" type="submit">Submit</button>
+                                        <button class="cancel" type="button">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
