@@ -43,7 +43,6 @@ document.querySelector('#search').addEventListener('input', debounce( async (e) 
 
 }, 1000));
 
-
 document.querySelector('.cancel').addEventListener('click', function(event) {
     document.querySelector('.custom-overlay').classList.toggle('show');
 });
@@ -61,13 +60,14 @@ document.querySelector('#submitBtn').addEventListener('click',async(e) => {
     const title = document.querySelector('#title').value
     const genre = document.querySelector('#genre').value
     const rating = document.querySelector('#ratings').value
-    const director = document.querySelector('#director').value
+    const poster_path = document.querySelector('#director').value
 
     let movie = {
-        title,genre,rating,director
+        title,genre,rating,poster_path
     }
     await addMovie(movie)
-    await displayMovies()
+    document.querySelector('.content').innerHTML = ''
+    await displayFavorites()
 });
 
 

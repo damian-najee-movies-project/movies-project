@@ -17,7 +17,7 @@ class Movie {
               </div>
               <div class="card-bottom">
                 <h2 class="movie-title">${this.title}</h2>
-                ${this.vote_average ?  `<p>${this.vote_average}</p>`: `<p>${this.genres}</p>`}
+                ${this.vote_average ?  `<p>Rating: ${this.vote_average}</p>`: `<p>Genres: ${this.genres}</p>`}
                 <button class="edit-movie">Edit</button>
                 <button class="movie-delete">Delete</button>
               </div>
@@ -33,10 +33,10 @@ class Movie {
                 const title = document.querySelector('#edit-title').value
                 const genre = document.querySelector('#edit-genre').value
                 const rating = document.querySelector('#edit-ratings').value
-                const director = document.querySelector('#edit-director').value
+                const image = document.querySelector('#edit-director').value
 
                 let movieEdits = {
-                    title,genre,rating,director
+                    title,genre,vote_average:parseFloat(rating),image
                 }
                 await edit(this.id, movieEdits)
                 document.querySelector('.content').innerHTML = ''
