@@ -1,4 +1,4 @@
-import {deleteFavorite, editFavorite} from "../movie-api.js";
+import {deleteFavorite, editFavorite, edit} from "../movie-api.js";
 class Movie {
     constructor(data, target){
         this.poster_path= data.poster_path
@@ -25,6 +25,7 @@ class Movie {
         moviesNode.innerHTML = html;
         let editButton = moviesNode.querySelector('.edit-movie')
         editButton.addEventListener('click', async function(){
+            edit(this.id)
             await editFavorite(this.id)
         }.bind(this));
 

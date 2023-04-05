@@ -35,6 +35,7 @@ document.querySelector('#search').addEventListener('input', debounce( async (e) 
 
 }, 1000));
 
+
 document.querySelector('.cancel').addEventListener('click', function(event) {
     document.querySelector('.custom-overlay').classList.toggle('show');
 });

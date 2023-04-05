@@ -1,5 +1,6 @@
 import Movie from './Components/Movie.js';
 import keys from "./keys.js";
+import SearchMovie from "./Components/SearchMovie.js";
 // import searchMovie from "./Components/SearchMovie";
 export async function getMovies(movie){
     let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.movieKey}&language=en-US&page=1`
@@ -94,6 +95,9 @@ export const editFavorite = async (id) => {
         console.log(error);
     }
 }
+export const edit = (id) => {
+
+}
 export const search = async (input)=>{
     try{
         let url = `https://api.themoviedb.org/3/search/movie?api_key=${keys.movieKey}&query=${input}&language=en-US&page=1&include_adult=false`
@@ -110,7 +114,7 @@ export const search = async (input)=>{
         if (input.toLowerCase() === 'the' || input.toLowerCase() === 'the ') {
             return;
         }
-        data.results.forEach(movie => new Movie(movie, movieList));
+        data.results.forEach(movie => new SearchMovie(movie, movieList));
     }catch(e){
         console.log(e)
     }
