@@ -1,4 +1,4 @@
-import {deleteFavorite, editFavorite, edit} from "../movie-api.js";
+import {deleteFavorite, editFavorite, edit, displayMovies, displayFavorites} from "../movie-api.js";
 class Movie {
     constructor(data, target){
         this.poster_path= data.poster_path
@@ -25,8 +25,22 @@ class Movie {
         moviesNode.innerHTML = html;
         let editButton = moviesNode.querySelector('.edit-movie')
         editButton.addEventListener('click', async function(){
-            edit(this.id)
-            await editFavorite(this.id)
+            let form = document.getElementById('edit-form');
+            form.style.display = 'block';
+            document.querySelector('#submitEditBtn').addEventListener('click',async(e) => {
+                const form = document.forms['myForm'];
+                //const title = form.elements['title'].value;
+                const title = document.querySelector('#edit-title').value
+                const genre = document.querySelector('#edit-genre').value
+                const rating = document.querySelector('#edit-ratings').value
+                const director = document.querySelector('#edit-director').value
+
+                let movieEdits = {
+                    title,genre,rating,director
+                }
+                await edit(this.id, movieEdits)
+                await displayFavorites()
+            });
         }.bind(this));
 
         let deleteButton = moviesNode.querySelector('.movie-delete');

@@ -304,3 +304,29 @@ form{
     padding: 20px;
     border-radius: 5px;
 }
+.margin{
+    margin: 20px;
+}
+label{
+    font-size: 30px;
+}
+form input{
+    width: 210px;
+}
+form{
+    color: white;
+}
+.edit-form{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 320px;
+    width: 635px;
+    background-color: #414141;
+    opacity: .95;
+    padding: 20px;
+    z-index: 2;
+}
+.rel{
+    position: relative;
+}

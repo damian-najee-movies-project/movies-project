@@ -1,4 +1,12 @@
-import {displayMovies, addMovie, deleteFavorite, search, debounce, displayFavorites} from './movie-api.js';
+import {
+    displayMovies,
+    addMovie,
+    deleteFavorite,
+    search,
+    debounce,
+    displayFavorites,
+    edit
+} from './movie-api.js';
 const carousel = document.querySelector('.carousel');
 const rightButton = document.querySelector('#left');
 const leftButton = document.querySelector('#right');
@@ -39,6 +47,11 @@ document.querySelector('#search').addEventListener('input', debounce( async (e) 
 document.querySelector('.cancel').addEventListener('click', function(event) {
     document.querySelector('.custom-overlay').classList.toggle('show');
 });
+document.querySelector('.cancelEditBtn').addEventListener('click', function(event) {
+    let form = document.getElementById('edit-form');
+    form.style.display = 'none';
+});
+
 document.querySelector('#submitBtn').addEventListener('click',async(e) => {
     const form = document.forms['myForm'];
     //const title = form.elements['title'].value;

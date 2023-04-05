@@ -81,22 +81,24 @@ export const deleteFavorite = async (id) => {
     }
 }
 
-export const editFavorite = async (id) => {
+export const editFavorite = async (id, edits) => {
     try {
-        let url = `http://localhost:3000/movies/${id}`;
-        let options = {
-            method: "PATCH"
-
-        }
-        let response = await fetch(url, options);
-        let data = await response.json();
+        const response = await fetch(`http://localhost:3000/movies/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(edits),
+        });
+        let data = await response.json()
         return data
     } catch(error){
         console.log(error);
     }
 }
-export const edit = (id) => {
+export const edit = async (id, movieEdits) => {
 
+        let response = await editFavorite(id, movieEdits);
 }
 export const search = async (input)=>{
     try{
