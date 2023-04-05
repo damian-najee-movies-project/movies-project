@@ -104,7 +104,7 @@
     </section>
     <section class="container rel">
         <div class="row justify-space-between align-center catalog-row-height catalog-title">
-            <div class="column shrink catalog-font-size">Catalog</div>
+            <div class="column shrink catalog-font-size">Favorites</div>
             <div class="column shrink">
                 <nav class="row">
                     <div id="add-movie" class="column shrink "><a href="#" title="Go Home">+ Add movie</a></div>
@@ -117,7 +117,11 @@
         <div class="overlay">
                 <div class="row input-search">
                     <div class="column justify-center">
-                        <input id="search" type="text" class="movie-search">
+                        <div class="row">
+                            <label for="search">Search:</label>
+                            <input id="search" type="text" class="movie-search">
+                            <button class="search-cancel">Cancel</button>
+                        </div>
                     </div>
                     <div class="column">
                         <div class="search-content">

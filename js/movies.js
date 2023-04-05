@@ -47,6 +47,9 @@ document.querySelector('#search').addEventListener('input', debounce( async (e) 
 document.querySelector('.cancel').addEventListener('click', function(event) {
     document.querySelector('.custom-overlay').classList.toggle('show');
 });
+document.querySelector('.search-cancel').addEventListener('click', function(event) {
+    document.querySelector('.overlay').classList.toggle('show');
+});
 document.querySelector('.cancelEditBtn').addEventListener('click', function(event) {
     let form = document.getElementById('edit-form');
     form.style.display = 'none';
