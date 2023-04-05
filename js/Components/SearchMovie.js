@@ -1,6 +1,6 @@
 import {addMovie} from "../movie-api.js";
 
-class searchMovie {
+class SearchMovie {
     constructor(data, target) {
         this.poster_path = data.poster_path
         this.title = data.title;
@@ -23,7 +23,7 @@ class searchMovie {
         `;
         moviesNode.innerHTML = html;
         let pushMovie = moviesNode.querySelector('.movie-add');
-        addMovie.addEventListener('click', async function () {
+        pushMovie.addEventListener('click', async function () {
             await addMovie({
                 img: this.poster_path,
                 title:this.title,
@@ -34,4 +34,4 @@ class searchMovie {
 
     }
 }
-export default searchMovie
+export default SearchMovie

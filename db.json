@@ -40,17 +40,19 @@
     },
     {
       "id": 4,
-      "title": "Crocodile Dundee",
+      "title": "new Croc",
       "year": "1986",
       "runtime": "97",
       "genres": [
         "Adventure",
         "Comedy"
       ],
-      "director": "Peter Faiman",
+      "director": "",
       "actors": "Paul Hogan, Linda Kozlowski, John Meillon, David Gulpilil",
       "plot": "An American reporter goes to the Australian outback to meet an eccentric crocodile poacher and invites him to New York City.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg0MTU1MTg4NF5BMl5BanBnXkFtZTgwMDgzNzYxMTE@._V1_SX300.jpg"
+      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg0MTU1MTg4NF5BMl5BanBnXkFtZTgwMDgzNzYxMTE@._V1_SX300.jpg",
+      "genre": "",
+      "rating": ""
     },
     {
       "id": 6,

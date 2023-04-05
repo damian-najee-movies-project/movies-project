@@ -1,5 +1,6 @@
 import Movie from './Components/Movie.js';
 import keys from "./keys.js";
+import SearchMovie from "./Components/SearchMovie.js";
 // import searchMovie from "./Components/SearchMovie";
 export async function getMovies(movie){
     let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.movieKey}&language=en-US&page=1`
@@ -80,19 +81,24 @@ export const deleteFavorite = async (id) => {
     }
 }
 
-export const editFavorite = async (id) => {
+export const editFavorite = async (id, edits) => {
     try {
-        let url = `http://localhost:3000/movies/${id}`;
-        let options = {
-            method: "PATCH"
-
-        }
-        let response = await fetch(url, options);
-        let data = await response.json();
+        const response = await fetch(`http://localhost:3000/movies/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(edits),
+        });
+        let data = await response.json()
         return data
     } catch(error){
         console.log(error);
     }
+}
+export const edit = async (id, movieEdits) => {
+
+        let response = await editFavorite(id, movieEdits);
 }
 export const search = async (input)=>{
     try{
@@ -110,7 +116,7 @@ export const search = async (input)=>{
         if (input.toLowerCase() === 'the' || input.toLowerCase() === 'the ') {
             return;
         }
-        data.results.forEach(movie => new Movie(movie, movieList));
+        data.results.forEach(movie => new SearchMovie(movie, movieList));
     }catch(e){
         console.log(e)
     }

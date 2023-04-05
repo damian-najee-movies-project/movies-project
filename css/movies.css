@@ -216,18 +216,31 @@ body {
     gap: 10px;
     padding: 0 10px 10px 10px;
 }
+
 .overlay {
     position: fixed;
     top: 0;
     right: -100%;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     opacity: .9;
     background-color: #1e2033;
     z-index: 9999;
     transition: all 0.3s ease-in-out;
+    overflow-y: auto;
 }
-.overlay.show {
+
+.search-content{
+    position: absolute;
+    top: 50px;
+    left: -298px;
+    max-height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.overlay.show{
     right: -500px;
 }
 .custom-overlay {
@@ -244,31 +257,76 @@ body {
 .custom-overlay.show {
     right: -500px;
 }
-.form-container {
+.input-search{
     position: absolute;
-    width: 700px;
-    height: 100%;
-    top: 418px;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
+    top: 20px;
+    left: 25%;
 }
+/*.form-container {*/
+/*    width: 700px;*/
+/*    height: 100%;*/
+/*    top: 418px;*/
+/*    left: 35%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    background-color: white;*/
+/*    padding: 20px;*/
+/*    border-radius: 5px;*/
+/*}*/
 form{
     color: black;
 }
 .movie-search{
    width: 300px;
 }
-#search.movie-search {
-    height: 40px;
-    background-color: lightgray;
-    padding: 30px;
-}
+
+
 .card-bottom {
     display:flex;
     flex-direction: column;
     gap: 10px;
     padding: 0 10px 10px 10px;
+}
+.edit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+.margin{
+    margin: 20px;
+}
+label{
+    font-size: 30px;
+}
+form input{
+    width: 210px;
+}
+form{
+    color: white;
+}
+.edit-form{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 320px;
+    width: 635px;
+    background-color: #414141;
+    opacity: .95;
+    padding: 20px;
+    z-index: 2;
+}
+.rel{
+    position: relative;
 }
