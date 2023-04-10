@@ -34,10 +34,22 @@ class Movie {
                 const genre = document.querySelector('#edit-genre').value
                 const rating = document.querySelector('#edit-ratings').value
                 const image = document.querySelector('#edit-director').value
-
-                let movieEdits = {
-                    title,genre,vote_average:parseFloat(rating),image
+                let movieEdits = {}
+                if(title != ''){
+                    movieEdits['title'] = title;
                 }
+                if(genre != ''){
+                    movieEdits[genre] = genre;
+                }
+                if(rating != ''){
+                    movieEdits[vote_average] = rating;
+                }
+                if(image != ''){
+                    movieEdits[image] = image
+                }
+                // let movieEdits = {
+                //     title,genre,vote_average:parseFloat(rating),image
+                // }
                 await edit(this.id, movieEdits)
                 document.querySelector('.content').innerHTML = ''
                 document.getElementById('edit-form').style.display ='none'
